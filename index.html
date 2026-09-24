@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f5a8a8">
-<title>ひだまりログ v0.1</title>
+<title>ひだまりログ v0.2</title>
 <style>
 :root{
   --bg:#fffaf6;--card:#fff;--ink:#4b3b3b;--muted:#9b8585;--line:#f1dddd;
@@ -39,7 +39,9 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .row{display:flex;gap:8px}.row>*{flex:1}.hidden{display:none!important}
 .charhead{display:flex;justify-content:space-between;align-items:center}.back{border:0;background:none;color:var(--accent);font-weight:800;padding:0}
 .search{margin-bottom:12px}
-.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.calday{min-height:66px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px;color:var(--ink);font-size:12px}.calday.muted{opacity:.35}.dots{font-size:10px;line-height:1.2;margin-top:5px;color:var(--accent)}
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.calday{min-height:66px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px;color:var(--ink);font-size:12px}.calday.muted{opacity:.35}.dots{font-size:12px;line-height:1.25;margin-top:7px;color:var(--accent);min-height:16px;letter-spacing:2px}
+.period{height:5px;background:var(--pink);margin:5px -7px 0}.period.start{margin-left:0;border-radius:999px 0 0 999px}.period.end{margin-right:0;border-radius:0 999px 999px 0}.period.single{margin:5px 0 0;border-radius:999px}
+.legend{display:flex;gap:9px 14px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}.legend span{white-space:nowrap}.legend .line{display:inline-block;width:22px;height:5px;background:var(--pink);border-radius:999px;vertical-align:middle;margin-right:4px}
 .quote{background:var(--pink3);border-radius:14px;padding:12px;line-height:1.6}
 .fab{position:fixed;right:max(18px,calc((100vw - 760px)/2 + 18px));bottom:92px;border:0;background:var(--accent);color:white;width:54px;height:54px;border-radius:50%;font-size:25px;box-shadow:var(--shadow)}
 @media(max-width:480px){.grid{grid-template-columns:1fr}.app{width:100%}}
@@ -47,7 +49,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 </head>
 <body>
 <div class="app">
-<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.1</small></div><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></header>
+<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.2</small></div><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></header>
 <main>
 <section class="page active" id="diaryPage">
   <div class="card datebar"><button id="prevDay">←</button><div class="date" id="dateLabel"></div><button id="nextDay">→</button></div>
@@ -55,8 +57,8 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
     <button class="tab" data-tab="happy">うれしい</button><button class="tab active" data-tab="daily">日常</button><button class="tab" data-tab="weak">弱音</button>
   </div>
   <div class="card">
-    <textarea id="diaryInput" placeholder="今のことを、ひとこと。"></textarea>
-    <div class="composer-actions"><small id="diaryHint">日常のつぶやき</small><button class="primary" id="postDiary">記録する</button></div>
+    <textarea id="diaryInput" placeholder=""></textarea>
+    <div class="composer-actions"><span></span><button class="primary" id="postDiary">記録する</button></div>
   </div>
   <div class="card"><div class="section-title">今日のスタンプ</div><div class="stamps" id="stampList"></div></div>
   <div class="card"><div class="section-title" id="entriesTitle">日常</div><div id="diaryEntries"></div></div>
@@ -70,9 +72,9 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
   </div>
   <div class="card">
     <div class="section-title">新しいキャラクター</div>
-    <input id="charName" placeholder="名前">
+    <input id="charName" placeholder="名前"><input id="charKana" placeholder="ふりがな" style="margin-top:8px">
     <div class="row" style="margin-top:8px"><select id="charKind"><option value="oc">OC</option><option value="copyright">版権</option></select><select id="ocKind"><option value="investigator">探索者</option><option value="original">一次創作</option></select></div>
-    <input id="workName" placeholder="作品名 / システム名（任意）" style="margin-top:8px">
+    <input id="workName" placeholder="作品名 / システム名（任意）" style="margin-top:8px"><input id="iacharaUrl" type="url" placeholder="いあきゃらURL（探索者のみ）" style="margin-top:8px">
     <button class="primary" id="addChar" style="margin-top:9px">登録</button>
   </div>
 </section>
@@ -90,6 +92,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 <section class="page" id="calendarPage">
   <div class="card"><div class="datebar"><button id="prevMonth">←</button><div class="date" id="monthLabel"></div><button id="nextMonth">→</button></div></div>
   <div class="card"><div class="calgrid" id="calendarGrid"></div></div>
+  <div class="card"><div class="section-title">マークの説明</div><div class="legend"><span><i class="line"></i>生理</span><span>● 頭痛</span><span>◆ 腹痛</span><span>☾ 眠い</span><span>▽ メンタル↓</span><span>✦ 元気</span><span>✓ 運動</span></div></div>
 </section>
 
 <section class="page" id="searchPage">
@@ -119,10 +122,10 @@ function applyTheme(){document.documentElement.dataset.theme=data.theme||'light'
 themeBtn.onclick=()=>{data.theme=data.theme==='dark'?'light':'dark';save();applyTheme()};applyTheme();
 
 function renderDiary(){
- const key=ds(currentDate), names={happy:'うれしい',daily:'日常',weak:'弱音'}, hints={happy:'うれしかったことを残そう',daily:'日常のつぶやき',weak:'ここでは遠慮なく弱音を吐いていい'};
+ const key=ds(currentDate), names={happy:'うれしい',daily:'日常',weak:'弱音'};
  dateLabel.innerHTML=`${currentDate.getMonth()+1}月${currentDate.getDate()}日<small>${['日','月','火','水','木','金','土'][currentDate.getDay()]}曜日</small>`;
- entriesTitle.textContent=names[diaryTab];diaryHint.textContent=hints[diaryTab];
- diaryInput.placeholder=diaryTab==='happy'?'今日うれしかったことは？':diaryTab==='weak'?'しんどいこと、ここに置いていこ。':'今のことを、ひとこと。';
+ entriesTitle.textContent=names[diaryTab];
+ diaryInput.placeholder='';
  document.querySelectorAll('#diaryTabs .tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===diaryTab));
  const list=data.diary.filter(e=>e.date===key&&e.type===diaryTab).sort((a,b)=>b.ts-a.ts);
  diaryEntries.innerHTML=list.length?list.map(e=>`<div class="entry"><div class="meta"><span>${new Date(e.ts).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})}</span><span><button class="star ${e.fav?'on':''}" onclick="toggleDiaryFav('${e.id}')">★</button><button class="star" onclick="delDiary('${e.id}')">×</button></span></div><div class="entrytext">${esc(e.text)}</div></div>`).join(''):'<div class="empty">まだ記録がありません。</div>';
@@ -138,17 +141,21 @@ window.toggleDiaryFav=id=>{let e=data.diary.find(x=>x.id===id);if(e)e.fav=!e.fav
 window.delDiary=id=>{if(confirm('この記録を削除しますか？')){data.diary=data.diary.filter(x=>x.id!==id);save();renderDiary();}};
 
 function renderChars(){
- let q=charSearch.value.trim().toLowerCase();let arr=data.characters.filter(c=>(c.name+' '+(c.work||'')).toLowerCase().includes(q));
- charGrid.innerHTML=arr.length?arr.map(c=>`<button class="char" onclick="openChar('${c.id}')"><strong>${esc(c.name)}</strong><small>${c.kind==='oc'?(c.ocKind==='investigator'?'OC・探索者':'OC・一次創作'):'版権'}${c.work?' / '+esc(c.work):''}</small></button>`).join(''):'<div class="empty">まだキャラクターがいません。</div>';
+ let q=charSearch.value.trim().toLowerCase();let arr=data.characters.filter(c=>(c.name+' '+(c.kana||'')+' '+(c.work||'')).toLowerCase().includes(q));
+ charGrid.innerHTML=arr.length?arr.map(c=>`<button class="char" onclick="openChar('${c.id}')"><strong>${esc(c.name)}</strong>${c.kana?`<small>${esc(c.kana)}</small>`:''}<small>${c.kind==='oc'?(c.ocKind==='investigator'?'OC・探索者':'OC・一次創作'):'版権'}${c.work?' / '+esc(c.work):''}</small></button>`).join(''):'<div class="empty">まだキャラクターがいません。</div>';
 }
 charSearch.oninput=renderChars;
-charKind.onchange=()=>ocKind.classList.toggle('hidden',charKind.value!=='oc');
-addChar.onclick=()=>{let name=charName.value.trim();if(!name)return;data.characters.push({id:crypto.randomUUID(),name,kind:charKind.value,ocKind:ocKind.value,work:workName.value.trim(),notes:{quotes:[],settings:[],thoughts:[]}});charName.value='';workName.value='';save();renderChars();};
+function updateCharFields(){ocKind.classList.toggle('hidden',charKind.value!=='oc');iacharaUrl.classList.toggle('hidden',!(charKind.value==='oc'&&ocKind.value==='investigator'))}
+charKind.onchange=updateCharFields;ocKind.onchange=updateCharFields;updateCharFields();
+addChar.onclick=()=>{let name=charName.value.trim();if(!name)return;data.characters.push({id:crypto.randomUUID(),name,kana:charKana.value.trim(),kind:charKind.value,ocKind:ocKind.value,work:workName.value.trim(),iachara:(charKind.value==='oc'&&ocKind.value==='investigator')?iacharaUrl.value.trim():'',notes:{quotes:[],settings:[],thoughts:[]}});charName.value='';charKana.value='';workName.value='';iacharaUrl.value='';save();renderChars();};
 window.openChar=id=>{currentChar=id;charTab='quotes';renderCharDetail();showPage('charDetailPage');};
 charBack.onclick=()=>{renderChars();showPage('charactersPage')};
 function renderCharDetail(){
  let c=data.characters.find(x=>x.id===currentChar);if(!c)return;
- charTitle.textContent=c.name;charSub.textContent=(c.kind==='oc'?(c.ocKind==='investigator'?'OC・探索者':'OC・一次創作'):'版権')+(c.work?' / '+c.work:'');
+ charTitle.innerHTML=esc(c.name)+(c.kana?`<small style="display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:4px">${esc(c.kana)}</small>`:'');
+ let sub=(c.kind==='oc'?(c.ocKind==='investigator'?'OC・探索者':'OC・一次創作'):'版権')+(c.work?' / '+esc(c.work):'');
+ if(c.kind==='oc'&&c.ocKind==='investigator'&&c.iachara) sub+=`<br><a href="${esc(c.iachara)}" target="_blank" rel="noopener" style="color:var(--accent)">いあきゃらを開く ↗</a>`;
+ charSub.innerHTML=sub;
  document.querySelectorAll('#charTabs .tab').forEach(b=>b.classList.toggle('active',b.dataset.ctab===charTab));
  let ph={quotes:'そのキャラの台詞を残す',settings:'設定・考察・プロフィールを書く',thoughts:'このキャラへのオタクの叫びをぶち込む'};
  charHint.textContent=ph[charTab];charInput.placeholder=ph[charTab]+'…';
@@ -165,7 +172,8 @@ function renderCalendar(){
  let y=calDate.getFullYear(),m=calDate.getMonth();monthLabel.textContent=`${y}年 ${m+1}月`;
  let first=new Date(y,m,1),start=new Date(y,m,1-first.getDay());
  let heads=['日','月','火','水','木','金','土'].map(x=>`<div style="text-align:center;color:var(--muted);font-size:12px">${x}</div>`).join('');
- let days='';for(let i=0;i<42;i++){let d=new Date(start);d.setDate(start.getDate()+i);let k=ds(d),cnt=data.diary.filter(e=>e.date===k).length,st=data.stamps[k]||[];days+=`<button class="calday ${d.getMonth()!==m?'muted':''}" onclick="jumpDay('${k}')"><b>${d.getDate()}</b><div class="dots">${cnt?`記録 ${cnt}`:''}${st.length?'<br>'+st.join('・'):''}</div></button>`}calendarGrid.innerHTML=heads+days;
+ let days='',icons={'頭痛':'●','腹痛':'◆','眠い':'☾','メンタル↓':'▽','元気':'✦','運動':'✓'};
+ for(let i=0;i<42;i++){let d=new Date(start);d.setDate(start.getDate()+i);let k=ds(d),st=data.stamps[k]||[];let p=new Date(d);p.setDate(d.getDate()-1);let n=new Date(d);n.setDate(d.getDate()+1);let has=st.includes('生理'),ph=(data.stamps[ds(p)]||[]).includes('生理'),nh=(data.stamps[ds(n)]||[]).includes('生理');let period='';if(has){let cls=!ph&&!nh?'single':(!ph?'start':(!nh?'end':''));period=`<div class="period ${cls}"></div>`}let marks=st.filter(x=>x!=='生理'&&icons[x]).map(x=>icons[x]).join(' ');days+=`<button class="calday ${d.getMonth()!==m?'muted':''}" onclick="jumpDay('${k}')"><b>${d.getDate()}</b>${period}<div class="dots">${marks}</div></button>`}calendarGrid.innerHTML=heads+days;
 }
 prevMonth.onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};nextMonth.onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};
 window.jumpDay=k=>{currentDate=new Date(k+'T12:00:00');renderDiary();showPage('diaryPage')};
