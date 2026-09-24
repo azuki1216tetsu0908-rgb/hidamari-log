@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f5a8a8">
-<title>ひだまりログ v0.2.1</title>
+<title>ひだまりログ v0.3</title>
 <style>
 :root{
   --bg:#fffaf6;--card:#fff;--ink:#4b3b3b;--muted:#9b8585;--line:#f1dddd;
@@ -33,7 +33,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .stamps{display:flex;gap:7px;flex-wrap:wrap}.stamp{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 10px}.stamp.on{background:var(--pink2);border-color:var(--pink)}
 .entry{padding:12px 2px;border-bottom:1px dashed var(--line)}.entry:last-child{border:0}.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:5px}.entrytext{white-space:pre-wrap;line-height:1.6}.star{border:0;background:none;color:var(--muted);font-size:18px}.star.on{color:#e8a126}.empty{text-align:center;color:var(--muted);padding:24px 8px}
 .section-title{font-weight:800;margin:4px 0 10px}
-.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);max-width:760px;margin:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);max-width:760px;margin:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
 .nav{border:0;background:none;color:var(--muted);padding:7px 2px;font-size:12px}.nav b{display:block;font-size:19px;margin-bottom:2px}.nav.active{color:var(--accent);font-weight:800}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.char{padding:13px;border:1px solid var(--line);background:var(--card);border-radius:16px;text-align:left;color:var(--ink)}.char strong{display:block}.char small{color:var(--muted)}
 .row{display:flex;gap:8px}.row>*{flex:1}.hidden{display:none!important}
@@ -44,12 +44,13 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .legend{display:flex;gap:9px 14px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}.legend span{white-space:nowrap}.legend .line{display:inline-block;width:22px;height:5px;background:var(--pink);border-radius:999px;vertical-align:middle;margin-right:4px}
 .quote{background:var(--pink3);border-radius:14px;padding:12px;line-height:1.6}
 .fab{position:fixed;right:max(18px,calc((100vw - 760px)/2 + 18px));bottom:92px;border:0;background:var(--accent);color:white;width:54px;height:54px;border-radius:50%;font-size:25px;box-shadow:var(--shadow)}
+.task-summary{text-align:center;padding:18px}.task-count{font-size:34px;font-weight:900;color:var(--accent);margin:4px 0}.task-list{display:flex;flex-direction:column;gap:8px}.task-item{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:11px}.task-item.done{background:var(--pink3)}.task-check{width:30px;height:30px;flex:0 0 30px;border:2px solid var(--pink);border-radius:9px;background:var(--card);color:white;font-weight:900}.task-item.done .task-check{background:var(--pink)}.task-name{flex:1}.task-item.done .task-name{text-decoration:line-through;color:var(--muted)}.task-menu{border:0;background:none;color:var(--muted);font-size:18px}.praise{position:fixed;inset:0;z-index:80;background:rgba(45,31,31,.42);display:flex;align-items:center;justify-content:center;padding:24px}.praise-card{width:min(390px,100%);background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 20px;text-align:center;box-shadow:0 18px 50px rgba(0,0,0,.18)}.praise-mark{font-size:54px;line-height:1}.praise-title{font-size:22px;font-weight:900;margin:10px 0 6px}.praise-text{line-height:1.7;color:var(--muted)}.set-chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px;color:var(--ink)}.set-chip.active{background:var(--pink);color:white;border-color:var(--pink)}
 @media(max-width:480px){.grid{grid-template-columns:1fr}.app{width:100%}}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.2.1</small></div><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></header>
+<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.3</small></div><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></header>
 <main>
 <section class="page active" id="diaryPage">
   <div class="card datebar"><button id="prevDay">←</button><div class="date" id="dateLabel"></div><button id="nextDay">→</button></div>
@@ -91,6 +92,13 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
   <div class="card"><div id="charEntries"></div></div>
 </section>
 
+<section class="page" id="tasksPage">
+  <div class="card datebar"><button id="prevTaskDay">←</button><div class="date" id="taskDateLabel"></div><button id="nextTaskDay">→</button></div>
+  <div class="card task-summary"><div style="color:var(--muted);font-weight:700">今日のできたこと</div><div class="task-count" id="taskDoneCount">0個</div><div id="taskSummaryPraise">ひとつずつで大丈夫！</div></div>
+  <div class="card"><div class="section-title">今日のやること</div><div class="task-list" id="taskList"></div><div class="row" style="margin-top:12px"><input id="newTaskName" placeholder="今日やることを追加"><button class="primary" id="addTodayTask" style="flex:0 0 auto">追加</button></div></div>
+  <div class="card"><div class="section-title">いつものセット</div><div class="stamps" id="setChips"></div><div style="margin-top:12px"><input id="newSetName" placeholder="新しいセット名（例：平日）"><button class="ghost" id="addSet" style="margin-top:8px">セットを作る</button></div><div id="setManager" style="margin-top:12px"></div></div>
+</section>
+
 <section class="page" id="calendarPage">
   <div class="card"><div class="datebar"><button id="prevMonth">←</button><div class="date" id="monthLabel"></div><button id="nextMonth">→</button></div></div>
   <div class="card"><div class="calgrid" id="calendarGrid"></div></div>
@@ -105,22 +113,24 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 <nav class="bottom">
 <button class="nav active" data-page="diaryPage"><b>⌂</b>日記</button>
 <button class="nav" data-page="charactersPage"><b>♡</b>キャラ</button>
+<button class="nav" data-page="tasksPage"><b>✓</b>できた</button>
 <button class="nav" data-page="calendarPage"><b>□</b>カレンダー</button>
 <button class="nav" data-page="searchPage"><b>⌕</b>検索</button>
 </nav>
+<div class="praise hidden" id="praiseOverlay"><div class="praise-card"><div class="praise-mark" id="praiseMark">💮</div><div class="praise-title" id="praiseTitle">よくできました！</div><div class="praise-text" id="praiseText"></div><button class="primary" id="closePraise" style="margin-top:18px">うれしい！</button></div></div>
 </div>
 <script>
 const KEY='hidamari_log_v01';
-const defaultData={diary:[],stamps:{},activeStamps:[],characters:[],theme:'light'};
+const defaultData={diary:[],stamps:{},activeStamps:[],characters:[],theme:'light',taskSets:[{id:'weekday',name:'平日',items:['朝起きた','着替えた','家を出た','出勤した','お昼ご飯食べた','定時まで働いた','帰宅した','お風呂に入った']}],taskDays:{}};
 let data=JSON.parse(localStorage.getItem(KEY)||'null')||defaultData;
-data.diary=data.diary||[]; data.stamps=data.stamps||{}; data.characters=data.characters||[]; data.activeStamps=data.activeStamps||[];
-let currentDate=new Date(), diaryTab='daily', currentChar=null, charTab='quotes', calDate=new Date();
+data.diary=data.diary||[]; data.stamps=data.stamps||{}; data.characters=data.characters||[]; data.activeStamps=data.activeStamps||[]; data.taskSets=data.taskSets||[{id:'weekday',name:'平日',items:['朝起きた','着替えた','家を出た','出勤した','お昼ご飯食べた','定時まで働いた','帰宅した','お風呂に入った']}]; data.taskDays=data.taskDays||{};
+let currentDate=new Date(), diaryTab='daily', currentChar=null, charTab='quotes', calDate=new Date(), taskDate=new Date(), activeTaskSet=data.taskSets[0]?.id||null;
 const stateStamps=['生理痛','頭痛','腹痛','眠い','メンタル↓','元気','運動'];
 const calendarIcons={'生理痛':'◉','頭痛':'●','腹痛':'◆','眠い':'☾','運動':'✓'};
 const save=()=>{localStorage.setItem(KEY,JSON.stringify(data));};
 const ds=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
 const esc=s=>(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));}
+function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));if(id==='tasksPage')renderTasks();}
 document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 function applyTheme(){document.documentElement.dataset.theme=data.theme||'light';document.getElementById('themeBtn').textContent=data.theme==='dark'?'☀':'☾';}
 themeBtn.onclick=()=>{data.theme=data.theme==='dark'?'light':'dark';save();applyTheme()};applyTheme();
@@ -166,12 +176,33 @@ cancelCharEdit.onclick=()=>charEditCard.classList.add('hidden');
 saveCharEdit.onclick=()=>{let c=data.characters.find(x=>x.id===currentChar),name=editCharName.value.trim();if(!c||!name)return;c.name=name;c.kana=editCharKana.value.trim();c.kind=editCharKind.value;c.ocKind=editOcKind.value;c.work=editWorkName.value.trim();c.iachara=(c.kind==='oc'&&c.ocKind==='investigator')?editIacharaUrl.value.trim():'';save();charEditCard.classList.add('hidden');renderCharDetail();renderChars();};
 deleteChar.onclick=()=>{if(confirm('このキャラクターとメモをすべて削除しますか？')){data.characters=data.characters.filter(x=>x.id!==currentChar);save();renderChars();showPage('charactersPage')}};
 
+
+const praisePool=[
+ ['💮','よくできました！','ちゃんとひとつ進めたね。えらい！'],
+ ['100','100点！','ひとつできた時点で今日はもう100点！'],
+ ['💮','たいへんよくできました','今日も自分のこと、ちゃんと進められたね。'],
+ ['◎','えらい！','ひとつクリア！今日も前に進んでるよ。'],
+ ['✿','できた！','そのひとつ、ちゃんと数えていいんだよ。']
+];
+function getTaskDay(k=ds(taskDate)){if(!data.taskDays[k])data.taskDays[k]={items:[],appliedSets:[]};return data.taskDays[k];}
+function applyTaskSet(setId){let set=data.taskSets.find(x=>x.id===setId),day=getTaskDay();if(!set)return;day.appliedSets=day.appliedSets||[];if(!day.appliedSets.includes(setId)){for(const name of set.items){if(!day.items.some(x=>x.name===name))day.items.push({id:crypto.randomUUID(),name,done:false,doneAt:null});}day.appliedSets.push(setId);save();}renderTasks();}
+function renderTasks(){let k=ds(taskDate),day=getTaskDay(k),today=ds(new Date())===k;taskDateLabel.innerHTML=`${taskDate.getMonth()+1}月${taskDate.getDate()}日<small>${['日','月','火','水','木','金','土'][taskDate.getDay()]}曜日</small>`;let done=day.items.filter(x=>x.done).length;taskDoneCount.textContent=`${done}個`;taskSummaryPraise.textContent=done?['今日もちゃんと進めてる！','できたこと、ちゃんとあるよ！','よくできました！'][done%3]:'ひとつできたら、それだけで花丸！';taskList.innerHTML=day.items.length?day.items.map(t=>`<div class="task-item ${t.done?'done':''}"><button class="task-check" onclick="toggleTask('${t.id}')">${t.done?'✓':''}</button><div class="task-name">${esc(t.name)}</div><button class="task-menu" onclick="deleteTask('${t.id}')">×</button></div>`).join(''):'<div class="empty">まだ何も入っていません。<br>できたら嬉しいことを、ひとつ置いてみよう。</div>';setChips.innerHTML=data.taskSets.map(x=>`<button class="set-chip ${(day.appliedSets||[]).includes(x.id)?'active':''}" onclick="applyTaskSet('${x.id}')">${esc(x.name)}${(day.appliedSets||[]).includes(x.id)?' ✓':''}</button>`).join('');setManager.innerHTML=data.taskSets.map(set=>`<div class="entry"><div class="meta"><strong>${esc(set.name)}</strong><button class="star" onclick="deleteSet('${set.id}')">×</button></div>${set.items.map((name,i)=>`<div style="display:flex;gap:6px;align-items:center;margin:6px 0"><span style="flex:1">・${esc(name)}</span><button class="ghost" style="padding:4px 8px" onclick="removeSetItem('${set.id}',${i})">削除</button></div>`).join('')}<div class="row" style="margin-top:8px"><input id="setadd_${set.id}" placeholder="このセットに追加"><button class="ghost" style="flex:0 0 auto" onclick="addSetItem('${set.id}')">追加</button></div></div>`).join('');}
+prevTaskDay.onclick=()=>{taskDate.setDate(taskDate.getDate()-1);renderTasks()};nextTaskDay.onclick=()=>{taskDate.setDate(taskDate.getDate()+1);renderTasks()};
+addTodayTask.onclick=()=>{let name=newTaskName.value.trim();if(!name)return;getTaskDay().items.push({id:crypto.randomUUID(),name,done:false,doneAt:null});newTaskName.value='';save();renderTasks();};
+window.toggleTask=id=>{let t=getTaskDay().items.find(x=>x.id===id);if(!t)return;t.done=!t.done;t.doneAt=t.done?Date.now():null;save();renderTasks();if(t.done){let p=praisePool[Math.floor(Math.random()*praisePool.length)];praiseMark.textContent=p[0];praiseTitle.textContent=t.name+'、できた！';praiseText.innerHTML=`${esc(p[1])}<br>${esc(p[2])}`;praiseOverlay.classList.remove('hidden');}};
+closePraise.onclick=()=>praiseOverlay.classList.add('hidden');praiseOverlay.onclick=e=>{if(e.target===praiseOverlay)praiseOverlay.classList.add('hidden')};
+window.deleteTask=id=>{if(confirm('この項目を今日のリストから消しますか？')){let d=getTaskDay();d.items=d.items.filter(x=>x.id!==id);save();renderTasks();}};
+addSet.onclick=()=>{let name=newSetName.value.trim();if(!name)return;let id=crypto.randomUUID();data.taskSets.push({id,name,items:[]});activeTaskSet=id;newSetName.value='';save();renderTasks();};
+window.deleteSet=id=>{if(confirm('このセットを削除しますか？ 今日の記録は消えません。')){data.taskSets=data.taskSets.filter(x=>x.id!==id);save();renderTasks();}};
+window.addSetItem=id=>{let input=document.getElementById('setadd_'+id),name=input?.value.trim(),set=data.taskSets.find(x=>x.id===id);if(!name||!set)return;set.items.push(name);input.value='';save();renderTasks();};
+window.removeSetItem=(id,i)=>{let set=data.taskSets.find(x=>x.id===id);if(!set)return;set.items.splice(i,1);save();renderTasks();};
+
 function dayEntryStamps(k){return [...new Set(data.diary.filter(e=>e.date===k).flatMap(e=>e.stamps||[]))];}
 function renderCalendar(){let y=calDate.getFullYear(),m=calDate.getMonth();monthLabel.textContent=`${y}年 ${m+1}月`;let first=new Date(y,m,1),start=new Date(y,m,1-first.getDay());let heads=['日','月','火','水','木','金','土'].map(x=>`<div style="text-align:center;color:var(--muted);font-size:12px">${x}</div>`).join('');let days='';for(let i=0;i<42;i++){let d=new Date(start);d.setDate(start.getDate()+i);let k=ds(d),day=data.stamps[k]||[],st=dayEntryStamps(k);let p=new Date(d);p.setDate(d.getDate()-1);let n=new Date(d);n.setDate(d.getDate()+1);let has=day.includes('生理'),ph=(data.stamps[ds(p)]||[]).includes('生理'),nh=(data.stamps[ds(n)]||[]).includes('生理');let period='';if(has){let cls=!ph&&!nh?'single':(!ph?'start':(!nh?'end':''));period=`<div class="period ${cls}"></div>`}let marks=Object.keys(calendarIcons).filter(x=>st.includes(x)).map(x=>calendarIcons[x]).join(' ');days+=`<button class="calday ${d.getMonth()!==m?'muted':''}" onclick="jumpDay('${k}')"><b>${d.getDate()}</b>${period}<div class="dots">${marks}</div></button>`}calendarGrid.innerHTML=heads+days;}
 prevMonth.onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};nextMonth.onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};window.jumpDay=k=>{currentDate=new Date(k+'T12:00:00');renderDiary();showPage('diaryPage')};
 
 globalSearch.oninput=()=>{let q=globalSearch.value.trim().toLowerCase();if(!q){searchResults.innerHTML='キーワードを入力してください。';searchResults.className='empty';return}let out=[];data.diary.filter(e=>e.text.toLowerCase().includes(q)).forEach(e=>out.push(`<div class="entry"><div class="meta"><span>日記 / ${e.date}</span></div><div class="entrytext">${esc(e.text)}</div></div>`));data.characters.forEach(c=>Object.entries(c.notes||{}).forEach(([type,arr])=>arr.filter(e=>e.text.toLowerCase().includes(q)).forEach(e=>out.push(`<div class="entry"><div class="meta"><span>${esc(c.name)} / ${{quotes:'台詞',settings:'設定',thoughts:'つぶやき'}[type]}</span></div><div class="entrytext">${esc(e.text)}</div></div>`))));searchResults.className='';searchResults.innerHTML=out.length?out.join(''):'<div class="empty">見つかりませんでした。</div>';};
-renderDiary();renderChars();renderCalendar();
+renderDiary();renderChars();renderCalendar();renderTasks();
 </script>
 </body>
 </html>
