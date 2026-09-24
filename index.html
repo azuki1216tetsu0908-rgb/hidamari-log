@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f5a8a8">
-<title>ひだまりログ v0.3</title>
+<title>ひだまりログ v0.4</title>
 <style>
 :root{
   --bg:#fffaf6;--card:#fff;--ink:#4b3b3b;--muted:#9b8585;--line:#f1dddd;
@@ -33,7 +33,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .stamps{display:flex;gap:7px;flex-wrap:wrap}.stamp{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 10px}.stamp.on{background:var(--pink2);border-color:var(--pink)}
 .entry{padding:12px 2px;border-bottom:1px dashed var(--line)}.entry:last-child{border:0}.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:5px}.entrytext{white-space:pre-wrap;line-height:1.6}.star{border:0;background:none;color:var(--muted);font-size:18px}.star.on{color:#e8a126}.empty{text-align:center;color:var(--muted);padding:24px 8px}
 .section-title{font-weight:800;margin:4px 0 10px}
-.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);max-width:760px;margin:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(6,1fr);max-width:760px;margin:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
 .nav{border:0;background:none;color:var(--muted);padding:7px 2px;font-size:12px}.nav b{display:block;font-size:19px;margin-bottom:2px}.nav.active{color:var(--accent);font-weight:800}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.char{padding:13px;border:1px solid var(--line);background:var(--card);border-radius:16px;text-align:left;color:var(--ink)}.char strong{display:block}.char small{color:var(--muted)}
 .row{display:flex;gap:8px}.row>*{flex:1}.hidden{display:none!important}
@@ -45,12 +45,15 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .quote{background:var(--pink3);border-radius:14px;padding:12px;line-height:1.6}
 .fab{position:fixed;right:max(18px,calc((100vw - 760px)/2 + 18px));bottom:92px;border:0;background:var(--accent);color:white;width:54px;height:54px;border-radius:50%;font-size:25px;box-shadow:var(--shadow)}
 .task-summary{text-align:center;padding:18px}.task-count{font-size:34px;font-weight:900;color:var(--accent);margin:4px 0}.task-list{display:flex;flex-direction:column;gap:8px}.task-item{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:11px}.task-item.done{background:var(--pink3)}.task-check{width:30px;height:30px;flex:0 0 30px;border:2px solid var(--pink);border-radius:9px;background:var(--card);color:white;font-weight:900}.task-item.done .task-check{background:var(--pink)}.task-name{flex:1}.task-item.done .task-name{text-decoration:line-through;color:var(--muted)}.task-menu{border:0;background:none;color:var(--muted);font-size:18px}.praise{position:fixed;inset:0;z-index:80;background:rgba(45,31,31,.42);display:flex;align-items:center;justify-content:center;padding:24px}.praise-card{width:min(390px,100%);background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 20px;text-align:center;box-shadow:0 18px 50px rgba(0,0,0,.18)}.praise-mark{font-size:54px;line-height:1}.praise-title{font-size:22px;font-weight:900;margin:10px 0 6px}.praise-text{line-height:1.7;color:var(--muted)}.set-chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px;color:var(--ink)}.set-chip.active{background:var(--pink);color:white;border-color:var(--pink)}
+.mental-stamp.level1{background:#ffe9e9;border-color:#f2bcbc}.mental-stamp.level2{background:#f5a7ad;border-color:#e98891;color:#fff}.mental-stamp.level3{background:#c95868;border-color:#b74657;color:#fff}
+.graph-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}.graph-tab{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:10px;border-radius:999px;font-weight:800}.graph-tab.active{background:var(--pink);border-color:var(--pink);color:#fff}
+.chart-wrap{overflow-x:auto}.mental-chart{width:100%;min-width:520px;height:260px;display:block}.symptom-grid{display:grid;grid-template-columns:72px 1fr;gap:8px 10px;align-items:center}.symptom-name{font-size:13px;font-weight:700}.symptom-track{position:relative;height:28px;border-bottom:1px solid var(--line)}.symptom-dot{position:absolute;top:8px;width:11px;height:11px;border-radius:50%;background:var(--pink);transform:translateX(-50%)}.graph-note{color:var(--muted);font-size:12px;line-height:1.6}.graph-legend{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.graph-legend span{background:var(--pink3);border-radius:999px;padding:6px 9px}
 @media(max-width:480px){.grid{grid-template-columns:1fr}.app{width:100%}}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.3</small></div><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></header>
+<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.4</small></div><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></header>
 <main>
 <section class="page active" id="diaryPage">
   <div class="card datebar"><button id="prevDay">←</button><div class="date" id="dateLabel"></div><button id="nextDay">→</button></div>
@@ -105,6 +108,13 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
   <div class="card"><div class="section-title">マークの説明</div><div class="legend"><span><i class="period-sample"></i> 生理</span><span>◉ 生理痛</span><span>● 頭痛</span><span>◆ 腹痛</span><span>☾ 眠い</span><span>✓ 運動</span></div></div>
 </section>
 
+<section class="page" id="graphPage">
+  <div class="graph-tabs"><button class="graph-tab active" data-range="day">今日</button><button class="graph-tab" data-range="week">1週間</button><button class="graph-tab" data-range="month">1か月</button></div>
+  <div class="card"><div class="datebar"><button id="prevGraph">←</button><div class="date" id="graphDateLabel"></div><button id="nextGraph">→</button></div></div>
+  <div class="card"><div class="section-title">♡ メンタルの波</div><div class="chart-wrap"><svg id="mentalChart" class="mental-chart" viewBox="0 0 620 260" aria-label="メンタルの波グラフ"></svg></div><div class="graph-legend"><span>0 なし</span><span>1 ちょっとしんどい</span><span>2 しんどい</span><span>3 めちゃしんどい</span></div></div>
+  <div class="card"><div class="section-title">身体の症状</div><div id="symptomTimeline"></div><div class="graph-note" style="margin-top:10px">投稿した時点で記録されていた症状を、同じ時間軸に表示します。</div></div>
+</section>
+
 <section class="page" id="searchPage">
   <input class="search" id="globalSearch" placeholder="日記・キャラメモを全文検索">
   <div class="card"><div class="section-title">検索結果</div><div id="searchResults" class="empty">キーワードを入力してください。</div></div>
@@ -115,6 +125,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 <button class="nav" data-page="charactersPage"><b>♡</b>キャラ</button>
 <button class="nav" data-page="tasksPage"><b>✓</b>できた</button>
 <button class="nav" data-page="calendarPage"><b>□</b>カレンダー</button>
+<button class="nav" data-page="graphPage"><b>⌁</b>グラフ</button>
 <button class="nav" data-page="searchPage"><b>⌕</b>検索</button>
 </nav>
 <div class="praise hidden" id="praiseOverlay"><div class="praise-card"><div class="praise-mark" id="praiseMark">💮</div><div class="praise-title" id="praiseTitle">よくできました！</div><div class="praise-text" id="praiseText"></div><button class="primary" id="closePraise" style="margin-top:18px">うれしい！</button></div></div>
@@ -123,14 +134,18 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 const KEY='hidamari_log_v01';
 const defaultData={diary:[],stamps:{},activeStamps:[],characters:[],theme:'light',taskSets:[{id:'weekday',name:'平日',items:['朝起きた','着替えた','家を出た','出勤した','お昼ご飯食べた','定時まで働いた','帰宅した','お風呂に入った']}],taskDays:{}};
 let data=JSON.parse(localStorage.getItem(KEY)||'null')||defaultData;
-data.diary=data.diary||[]; data.stamps=data.stamps||{}; data.characters=data.characters||[]; data.activeStamps=data.activeStamps||[]; data.taskSets=data.taskSets||[{id:'weekday',name:'平日',items:['朝起きた','着替えた','家を出た','出勤した','お昼ご飯食べた','定時まで働いた','帰宅した','お風呂に入った']}]; data.taskDays=data.taskDays||{};
-let currentDate=new Date(), diaryTab='daily', currentChar=null, charTab='quotes', calDate=new Date(), taskDate=new Date(), activeTaskSet=data.taskSets[0]?.id||null;
-const stateStamps=['生理痛','頭痛','腹痛','眠い','メンタル↓','元気','運動'];
+data.diary=data.diary||[]; data.stamps=data.stamps||{}; data.characters=data.characters||[]; data.activeStamps=data.activeStamps||[]; data.mentalLevel=data.mentalLevel||0;
+if(data.activeStamps.includes('メンタル↓')){data.activeStamps=data.activeStamps.filter(x=>x!=='メンタル↓');if(!data.mentalLevel)data.mentalLevel=1;}
+data.diary.forEach(e=>{if(e.mentalLevel==null)e.mentalLevel=(e.stamps||[]).includes('メンタル↓')?1:0;e.stamps=(e.stamps||[]).filter(x=>x!=='メンタル↓');});
+data.taskSets=data.taskSets||[{id:'weekday',name:'平日',items:['朝起きた','着替えた','家を出た','出勤した','お昼ご飯食べた','定時まで働いた','帰宅した','お風呂に入った']}]; data.taskDays=data.taskDays||{};
+let currentDate=new Date(), diaryTab='daily', currentChar=null, charTab='quotes', calDate=new Date(), taskDate=new Date(), graphDate=new Date(), graphRange='day', activeTaskSet=data.taskSets[0]?.id||null;
+const stateStamps=['生理痛','頭痛','腹痛','眠い','元気','運動'];
+const mentalLabels=['メンタル↓','ちょっとしんどい','しんどい','めちゃしんどい'];
 const calendarIcons={'生理痛':'◉','頭痛':'●','腹痛':'◆','眠い':'☾','運動':'✓'};
 const save=()=>{localStorage.setItem(KEY,JSON.stringify(data));};
 const ds=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
 const esc=s=>(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));if(id==='tasksPage')renderTasks();}
+function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));if(id==='tasksPage')renderTasks();if(id==='graphPage')renderGraph();}
 document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 function applyTheme(){document.documentElement.dataset.theme=data.theme||'light';document.getElementById('themeBtn').textContent=data.theme==='dark'?'☀':'☾';}
 themeBtn.onclick=()=>{data.theme=data.theme==='dark'?'light':'dark';save();applyTheme()};applyTheme();
@@ -141,17 +156,19 @@ function renderDiary(){
  entriesTitle.textContent=names[diaryTab]; diaryInput.placeholder='';
  document.querySelectorAll('#diaryTabs .tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===diaryTab));
  const list=data.diary.filter(e=>e.date===key&&e.type===diaryTab).sort((a,b)=>b.ts-a.ts);
- diaryEntries.innerHTML=list.length?list.map(e=>{let es=e.stamps||[];return `<div class="entry"><div class="meta"><span>${new Date(e.ts).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})}</span><span><button class="star ${e.fav?'on':''}" onclick="toggleDiaryFav('${e.id}')">★</button><button class="star" onclick="delDiary('${e.id}')">×</button></span></div><div class="entrytext">${esc(e.text)}</div><div class="stamps" style="margin-top:8px">${stateStamps.map(st=>`<button class="stamp ${es.includes(st)?'on':''}" style="padding:4px 8px;font-size:12px" onclick="toggleEntryStamp('${e.id}','${st}')">${st}</button>`).join('')}</div></div>`}).join(''):'<div class="empty">まだ記録がありません。</div>';
+ diaryEntries.innerHTML=list.length?list.map(e=>{let es=e.stamps||[];return `<div class="entry"><div class="meta"><span>${new Date(e.ts).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})}</span><span><button class="star ${e.fav?'on':''}" onclick="toggleDiaryFav('${e.id}')">★</button><button class="star" onclick="delDiary('${e.id}')">×</button></span></div><div class="entrytext">${esc(e.text)}</div><div class="stamps" style="margin-top:8px"><button class="stamp mental-stamp level${e.mentalLevel||0}" style="padding:4px 8px;font-size:12px" onclick="cycleEntryMental('${e.id}')">${mentalLabels[e.mentalLevel||0]}</button>${stateStamps.map(st=>`<button class="stamp ${es.includes(st)?'on':''}" style="padding:4px 8px;font-size:12px" onclick="toggleEntryStamp('${e.id}','${st}')">${st}</button>`).join('')}</div></div>`}).join(''):'<div class="empty">まだ記録がありません。</div>';
  const day=data.stamps[key]||[];
  periodStamp.innerHTML=`<button class="stamp ${day.includes('生理')?'on':''}" onclick="togglePeriod()">生理</button>`;
- stampList.innerHTML=stateStamps.map(st=>`<button class="stamp ${data.activeStamps.includes(st)?'on':''}" onclick="toggleActiveStamp('${st}')">${st}</button>`).join('');
+ stampList.innerHTML=`<button class="stamp mental-stamp level${data.mentalLevel}" onclick="cycleMental()">${mentalLabels[data.mentalLevel]}</button>`+stateStamps.map(st=>`<button class="stamp ${data.activeStamps.includes(st)?'on':''}" onclick="toggleActiveStamp('${st}')">${st}</button>`).join('');
  const happy=data.diary.filter(e=>e.type==='happy'&&e.date!==key);
  happyMemory.textContent=happy.length?happy[Math.floor(Math.random()*happy.length)].text:'まだ「うれしい」の記録がありません。';
 }
 prevDay.onclick=()=>{currentDate.setDate(currentDate.getDate()-1);renderDiary()};nextDay.onclick=()=>{currentDate.setDate(currentDate.getDate()+1);renderDiary()};
 document.querySelectorAll('#diaryTabs .tab').forEach(b=>b.onclick=()=>{diaryTab=b.dataset.tab;renderDiary()});
-postDiary.onclick=()=>{let t=diaryInput.value.trim();if(!t)return;data.diary.push({id:crypto.randomUUID(),date:ds(currentDate),type:diaryTab,text:t,ts:Date.now(),fav:false,stamps:[...data.activeStamps]});diaryInput.value='';save();renderDiary();renderCalendar();};
+postDiary.onclick=()=>{let t=diaryInput.value.trim();if(!t)return;data.diary.push({id:crypto.randomUUID(),date:ds(currentDate),type:diaryTab,text:t,ts:Date.now(),fav:false,stamps:[...data.activeStamps],mentalLevel:data.mentalLevel});diaryInput.value='';save();renderDiary();renderCalendar();};
 window.toggleActiveStamp=st=>{data.activeStamps=data.activeStamps.includes(st)?data.activeStamps.filter(x=>x!==st):[...data.activeStamps,st];save();renderDiary();};
+window.cycleMental=()=>{data.mentalLevel=(data.mentalLevel+1)%4;save();renderDiary();};
+window.cycleEntryMental=id=>{let e=data.diary.find(x=>x.id===id);if(!e)return;e.mentalLevel=((e.mentalLevel||0)+1)%4;save();renderDiary();if(document.getElementById('graphPage').classList.contains('active'))renderGraph();};
 window.togglePeriod=()=>{let k=ds(currentDate),a=data.stamps[k]||[];data.stamps[k]=a.includes('生理')?a.filter(x=>x!=='生理'):[...a.filter(x=>x!=='生理'),'生理'];save();renderDiary();renderCalendar();};
 window.toggleEntryStamp=(id,st)=>{let e=data.diary.find(x=>x.id===id);if(!e)return;e.stamps=e.stamps||[];e.stamps=e.stamps.includes(st)?e.stamps.filter(x=>x!==st):[...e.stamps,st];save();renderDiary();renderCalendar();};
 window.toggleDiaryFav=id=>{let e=data.diary.find(x=>x.id===id);if(e)e.fav=!e.fav;save();renderDiary();};
@@ -197,12 +214,51 @@ window.deleteSet=id=>{if(confirm('このセットを削除しますか？ 今日
 window.addSetItem=id=>{let input=document.getElementById('setadd_'+id),name=input?.value.trim(),set=data.taskSets.find(x=>x.id===id);if(!name||!set)return;set.items.push(name);input.value='';save();renderTasks();};
 window.removeSetItem=(id,i)=>{let set=data.taskSets.find(x=>x.id===id);if(!set)return;set.items.splice(i,1);save();renderTasks();};
 
+
+const symptomNames=['生理痛','頭痛','腹痛','眠い'];
+function graphPeriod(){
+ const d=new Date(graphDate);
+ if(graphRange==='day'){let k=ds(d);return {start:new Date(k+'T00:00:00'),end:new Date(k+'T23:59:59'),label:`${d.getMonth()+1}月${d.getDate()}日`};}
+ if(graphRange==='week'){let start=new Date(d);start.setHours(0,0,0,0);start.setDate(start.getDate()-6);let end=new Date(d);end.setHours(23,59,59,999);return {start,end,label:`${start.getMonth()+1}/${start.getDate()}〜${end.getMonth()+1}/${end.getDate()}`};}
+ let start=new Date(d.getFullYear(),d.getMonth(),1),end=new Date(d.getFullYear(),d.getMonth()+1,0,23,59,59,999);return {start,end,label:`${d.getFullYear()}年${d.getMonth()+1}月`};
+}
+function entryMoment(e){
+ let t=new Date(e.ts), parts=e.date.split('-').map(Number);
+ return new Date(parts[0],parts[1]-1,parts[2],t.getHours(),t.getMinutes(),t.getSeconds());
+}
+function renderGraph(){
+ document.querySelectorAll('.graph-tab').forEach(b=>b.classList.toggle('active',b.dataset.range===graphRange));
+ const P=graphPeriod();graphDateLabel.innerHTML=P.label;
+ const entries=data.diary.map(e=>({e,t:entryMoment(e)})).filter(x=>x.t>=P.start&&x.t<=P.end).sort((a,b)=>a.t-b.t);
+ const svg=mentalChart, W=620,H=260,L=112,R=20,T=20,B=38,pw=W-L-R,ph=H-T-B;
+ const labels=['なし','ちょっと\\nしんどい','しんどい','めちゃ\\nしんどい'];
+ let out='';
+ for(let i=0;i<4;i++){let y=T+ph-(i/3)*ph;out+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="var(--line)" stroke-width="1"/><text x="${L-10}" y="${y+4}" text-anchor="end" fill="var(--muted)" font-size="12">${labels[i].replace('\\n',' ')}</text>`;}
+ let xFor=t=>L+Math.max(0,Math.min(1,(t-P.start)/(P.end-P.start)))*pw;
+ let pts=entries.map(x=>({x:xFor(x.t),y:T+ph-((x.e.mentalLevel||0)/3)*ph,e:x.e,t:x.t}));
+ if(pts.length>1)out+=`<polyline points="${pts.map(p=>`${p.x},${p.y}`).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
+ for(const p of pts)out+=`<circle cx="${p.x}" cy="${p.y}" r="5" fill="var(--pink)" stroke="var(--card)" stroke-width="2"><title>${p.t.toLocaleString('ja-JP')}：${mentalLabels[p.e.mentalLevel||0]}</title></circle>`;
+ let ticks=graphRange==='day'?[0,6,12,18,24]:graphRange==='week'?[0,1,2,3,4,5,6]:[0,5,10,15,20,25,30];
+ ticks.forEach(v=>{let ratio=graphRange==='day'?v/24:graphRange==='week'?v/6:v/Math.max(1,new Date(graphDate.getFullYear(),graphDate.getMonth()+1,0).getDate()-1);let x=L+ratio*pw;let lab=graphRange==='day'?`${v}時`:graphRange==='week'?(()=>{let z=new Date(P.start);z.setDate(z.getDate()+v);return `${z.getMonth()+1}/${z.getDate()}`})():`${v+1}`;out+=`<text x="${x}" y="${H-12}" text-anchor="middle" fill="var(--muted)" font-size="11">${lab}</text>`;});
+ if(!entries.length)out+=`<text x="${L+pw/2}" y="${T+ph/2}" text-anchor="middle" fill="var(--muted)" font-size="14">この期間の記録はまだありません</text>`;
+ svg.innerHTML=out;
+ let rows='';
+ for(const name of symptomNames){
+   let hits=entries.filter(x=>(x.e.stamps||[]).includes(name));
+   rows+=`<div class="symptom-name">${name}</div><div class="symptom-track">${hits.map(h=>`<span class="symptom-dot" style="left:${((h.t-P.start)/(P.end-P.start))*100}%"><span class="hidden">${h.t}</span></span>`).join('')}</div>`;
+ }
+ symptomTimeline.innerHTML=`<div class="symptom-grid">${rows}</div>`;
+}
+document.querySelectorAll('.graph-tab').forEach(b=>b.onclick=()=>{graphRange=b.dataset.range;renderGraph()});
+prevGraph.onclick=()=>{if(graphRange==='day')graphDate.setDate(graphDate.getDate()-1);else if(graphRange==='week')graphDate.setDate(graphDate.getDate()-7);else graphDate.setMonth(graphDate.getMonth()-1);renderGraph()};
+nextGraph.onclick=()=>{if(graphRange==='day')graphDate.setDate(graphDate.getDate()+1);else if(graphRange==='week')graphDate.setDate(graphDate.getDate()+7);else graphDate.setMonth(graphDate.getMonth()+1);renderGraph()};
+
 function dayEntryStamps(k){return [...new Set(data.diary.filter(e=>e.date===k).flatMap(e=>e.stamps||[]))];}
 function renderCalendar(){let y=calDate.getFullYear(),m=calDate.getMonth();monthLabel.textContent=`${y}年 ${m+1}月`;let first=new Date(y,m,1),start=new Date(y,m,1-first.getDay());let heads=['日','月','火','水','木','金','土'].map(x=>`<div style="text-align:center;color:var(--muted);font-size:12px">${x}</div>`).join('');let days='';for(let i=0;i<42;i++){let d=new Date(start);d.setDate(start.getDate()+i);let k=ds(d),day=data.stamps[k]||[],st=dayEntryStamps(k);let p=new Date(d);p.setDate(d.getDate()-1);let n=new Date(d);n.setDate(d.getDate()+1);let has=day.includes('生理'),ph=(data.stamps[ds(p)]||[]).includes('生理'),nh=(data.stamps[ds(n)]||[]).includes('生理');let period='';if(has){let cls=!ph&&!nh?'single':(!ph?'start':(!nh?'end':''));period=`<div class="period ${cls}"></div>`}let marks=Object.keys(calendarIcons).filter(x=>st.includes(x)).map(x=>calendarIcons[x]).join(' ');days+=`<button class="calday ${d.getMonth()!==m?'muted':''}" onclick="jumpDay('${k}')"><b>${d.getDate()}</b>${period}<div class="dots">${marks}</div></button>`}calendarGrid.innerHTML=heads+days;}
 prevMonth.onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};nextMonth.onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};window.jumpDay=k=>{currentDate=new Date(k+'T12:00:00');renderDiary();showPage('diaryPage')};
 
 globalSearch.oninput=()=>{let q=globalSearch.value.trim().toLowerCase();if(!q){searchResults.innerHTML='キーワードを入力してください。';searchResults.className='empty';return}let out=[];data.diary.filter(e=>e.text.toLowerCase().includes(q)).forEach(e=>out.push(`<div class="entry"><div class="meta"><span>日記 / ${e.date}</span></div><div class="entrytext">${esc(e.text)}</div></div>`));data.characters.forEach(c=>Object.entries(c.notes||{}).forEach(([type,arr])=>arr.filter(e=>e.text.toLowerCase().includes(q)).forEach(e=>out.push(`<div class="entry"><div class="meta"><span>${esc(c.name)} / ${{quotes:'台詞',settings:'設定',thoughts:'つぶやき'}[type]}</span></div><div class="entrytext">${esc(e.text)}</div></div>`))));searchResults.className='';searchResults.innerHTML=out.length?out.join(''):'<div class="empty">見つかりませんでした。</div>';};
-renderDiary();renderChars();renderCalendar();renderTasks();
+renderDiary();renderChars();renderCalendar();renderTasks();renderGraph();
 </script>
 </body>
 </html>
