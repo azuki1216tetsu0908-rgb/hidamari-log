@@ -33,7 +33,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .stamps{display:flex;gap:7px;flex-wrap:wrap}.stamp{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 10px}.stamp.on{background:var(--pink2);border-color:var(--pink)}
 .entry{padding:12px 2px;border-bottom:1px dashed var(--line)}.entry:last-child{border:0}.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:5px}.entrytext{white-space:pre-wrap;line-height:1.6}.star{border:0;background:none;color:var(--muted);font-size:18px}.star.on{color:#e8a126}.empty{text-align:center;color:var(--muted);padding:24px 8px}
 .section-title{font-weight:800;margin:4px 0 10px}
-.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(6,1fr);max-width:760px;margin:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(7,1fr);max-width:760px;margin:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
 .nav{border:0;background:none;color:var(--muted);padding:7px 2px;font-size:12px}.nav b{display:block;font-size:19px;margin-bottom:2px}.nav.active{color:var(--accent);font-weight:800}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.char{padding:13px;border:1px solid var(--line);background:var(--card);border-radius:16px;text-align:left;color:var(--ink)}.char strong{display:block}.char small{color:var(--muted)}
 .row{display:flex;gap:8px}.row>*{flex:1}.hidden{display:none!important}
@@ -45,6 +45,17 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .quote{background:var(--pink3);border-radius:14px;padding:12px;line-height:1.6}
 .fab{position:fixed;right:max(18px,calc((100vw - 760px)/2 + 18px));bottom:92px;border:0;background:var(--accent);color:white;width:54px;height:54px;border-radius:50%;font-size:25px;box-shadow:var(--shadow)}
 .task-summary{text-align:center;padding:18px}.task-count{font-size:34px;font-weight:900;color:var(--accent);margin:4px 0}.task-list{display:flex;flex-direction:column;gap:8px}.task-item{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:11px}.task-item.done{background:var(--pink3)}.task-check{width:30px;height:30px;flex:0 0 30px;border:2px solid var(--pink);border-radius:9px;background:var(--card);color:white;font-weight:900}.task-item.done .task-check{background:var(--pink)}.task-name{flex:1}.task-item.done .task-name{text-decoration:line-through;color:var(--muted)}.task-menu{border:0;background:none;color:var(--muted);font-size:18px}.praise{position:fixed;inset:0;z-index:80;background:rgba(45,31,31,.42);display:flex;align-items:center;justify-content:center;padding:24px}.praise-card{width:min(390px,100%);background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 20px;text-align:center;box-shadow:0 18px 50px rgba(0,0,0,.18)}.praise-mark{font-size:54px;line-height:1}.praise-title{font-size:22px;font-weight:900;margin:10px 0 6px}.praise-text{line-height:1.7;color:var(--muted)}.set-chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px;color:var(--ink)}.set-chip.active{background:var(--pink);color:white;border-color:var(--pink)}
+.workout-card{padding:14px 2px;border-bottom:1px dashed var(--line)}.workout-card:last-child{border-bottom:0}
+.workout-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:9px}
+.workout-name{font-weight:900;font-size:16px}.workout-count{font-weight:900;white-space:nowrap}
+.workout-progress{height:18px;background:var(--pink3);border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:8px 0 7px}
+.workout-progress>span{display:block;height:100%;background:var(--pink);border-radius:999px;transition:width .25s ease}
+.workout-actions{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.workout-actions input{max-width:100px}.workout-actions button{padding:8px 11px}
+.workout-goal-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:9px}
+.workout-goal-row input,.workout-goal-row select{max-width:110px}
+.workout-pct{font-size:12px;color:var(--muted)}
+
 .mental-stamp.level1{background:#ffe9e9;border-color:#f2bcbc}.mental-stamp.level2{background:#f5a7ad;border-color:#e98891;color:#fff}.mental-stamp.level3{background:#c95868;border-color:#b74657;color:#fff}
 .graph-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}.graph-tab{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:10px;border-radius:999px;font-weight:800}.graph-tab.active{background:var(--pink);border-color:var(--pink);color:#fff}
 .chart-wrap{overflow-x:auto}.mental-chart{width:100%;min-width:520px;height:260px;display:block}.symptom-grid{display:grid;grid-template-columns:72px 1fr;gap:8px 10px;align-items:center}.symptom-name{font-size:13px;font-weight:700}.symptom-track{position:relative;height:28px;border-bottom:1px solid var(--line)}.symptom-dot{position:absolute;top:8px;width:11px;height:11px;border-radius:50%;background:var(--pink);transform:translateX(-50%)}.graph-note{color:var(--muted);font-size:12px;line-height:1.6}.graph-legend{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.graph-legend span{background:var(--pink3);border-radius:999px;padding:6px 9px}
@@ -53,7 +64,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 </head>
 <body>
 <div class="app">
-<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.5</small></div><div style="display:flex;gap:8px"><button class="iconbtn" id="settingsBtn" title="データ管理">⚙</button><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></div></header>
+<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.7</small></div><div style="display:flex;gap:8px"><button class="iconbtn" id="settingsBtn" title="データ管理">⚙</button><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></div></header>
 <main>
 <section class="page active" id="diaryPage">
   <div class="card datebar"><button id="prevDay">←</button><div class="date" id="dateLabel"></div><button id="nextDay">→</button></div>
@@ -108,6 +119,20 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
   <div class="card"><div class="section-title">マークの説明</div><div class="legend"><span><i class="period-sample"></i> 生理</span><span>◉ 生理痛</span><span>● 頭痛</span><span>◆ 腹痛</span><span>☾ 眠い</span><span>✓ 運動</span></div></div>
 </section>
 
+
+<section class="page" id="workoutPage">
+  <div class="card">
+    <div class="section-title">筋トレ</div>
+    <p class="graph-note">やった分だけ足して、目標までのゲージを伸ばそう。目標回数や単位はいつでも変更できます。</p>
+    <div id="workoutList"></div>
+  </div>
+  <div class="card">
+    <div class="section-title">筋トレメニューを追加</div>
+    <div class="row"><input id="newWorkoutName" placeholder="例：プランク"><input id="newWorkoutGoal" type="number" min="1" inputmode="numeric" placeholder="目標" style="max-width:100px"></div>
+    <div class="row" style="margin-top:8px"><select id="newWorkoutUnit"><option value="回">回</option><option value="秒">秒</option><option value="分">分</option></select><button class="primary" id="addWorkout" style="flex:0 0 auto">追加</button></div>
+  </div>
+</section>
+
 <section class="page" id="graphPage">
   <div class="graph-tabs"><button class="graph-tab active" data-range="day">今日</button><button class="graph-tab" data-range="week">1週間</button><button class="graph-tab" data-range="month">1か月</button></div>
   <div class="card"><div class="datebar"><button id="prevGraph">←</button><div class="date" id="graphDateLabel"></div><button id="nextGraph">→</button></div></div>
@@ -130,6 +155,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 <button class="nav active" data-page="diaryPage"><b>⌂</b>日記</button>
 <button class="nav" data-page="charactersPage"><b>♡</b>キャラ</button>
 <button class="nav" data-page="tasksPage"><b>✓</b>できた</button>
+<button class="nav" data-page="workoutPage"><b>▥</b>筋トレ</button>
 <button class="nav" data-page="calendarPage"><b>□</b>カレンダー</button>
 <button class="nav" data-page="graphPage"><b>⌁</b>グラフ</button>
 <button class="nav" data-page="searchPage"><b>⌕</b>検索</button>
@@ -145,6 +171,15 @@ data.diary=data.diary||[]; data.stamps=data.stamps||{}; data.characters=data.cha
 if(data.activeStamps.includes('メンタル↓')){data.activeStamps=data.activeStamps.filter(x=>x!=='メンタル↓');if(!data.mentalLevel)data.mentalLevel=1;}
 data.diary.forEach(e=>{if(e.mentalLevel==null)e.mentalLevel=(e.stamps||[]).includes('メンタル↓')?1:0;e.stamps=(e.stamps||[]).filter(x=>x!=='メンタル↓');});
 data.taskSets=data.taskSets||[{id:'weekday',name:'平日',items:['朝起きた','着替えた','家を出た','出勤した','お昼ご飯食べた','定時まで働いた','帰宅した','お風呂に入った']}]; data.taskDays=data.taskDays||{};
+data.workouts=data.workouts||[
+ {id:'squat',name:'スクワット',unit:'回',goal:100,current:0},
+ {id:'knee',name:'膝伸ばし',unit:'回',goal:100,current:0},
+ {id:'calf',name:'かかと上げ',unit:'回',goal:100,current:0},
+ {id:'flutter',name:'足バタバタ',unit:'回',goal:100,current:0},
+ {id:'glute',name:'お尻締め',unit:'秒',goal:60,current:0}
+];
+data.workouts.forEach(w=>{w.current=Math.max(0,Number(w.current)||0);w.goal=Math.max(1,Number(w.goal)||1);w.unit=w.unit||'回';});
+
 let currentDate=new Date(), diaryTab='daily', currentChar=null, charTab='quotes', calDate=new Date(), taskDate=new Date(), graphDate=new Date(), graphRange='day', activeTaskSet=data.taskSets[0]?.id||null;
 const stateStamps=['生理痛','頭痛','腹痛','眠い','元気','運動'];
 const mentalLabels=['メンタル↓','ちょっとしんどい','しんどい','めちゃしんどい'];
@@ -152,14 +187,14 @@ const calendarIcons={'生理痛':'◉','頭痛':'●','腹痛':'◆','眠い':'�
 const save=()=>{localStorage.setItem(KEY,JSON.stringify(data));};
 const ds=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
 const esc=s=>(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));if(id==='tasksPage')renderTasks();if(id==='graphPage')renderGraph();}
+function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));if(id==='tasksPage')renderTasks();if(id==='workoutPage')renderWorkouts();if(id==='graphPage')renderGraph();}
 document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 function applyTheme(){document.documentElement.dataset.theme=data.theme||'light';document.getElementById('themeBtn').textContent=data.theme==='dark'?'☀':'☾';}
 themeBtn.onclick=()=>{data.theme=data.theme==='dark'?'light':'dark';save();applyTheme()};applyTheme();
 settingsBtn.onclick=()=>{showPage('settingsPage');renderBackupStatus();};
 settingsBack.onclick=()=>showPage('diaryPage');
 function renderBackupStatus(){const v=localStorage.getItem(LAST_BACKUP_KEY);lastBackup.textContent='最終バックアップ：'+(v?new Date(v).toLocaleString('ja-JP',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}):'まだありません');}
-function backupPayload(){return {app:'hidamari-log',formatVersion:1,appVersion:'0.5',exportedAt:new Date().toISOString(),data:data};}
+function backupPayload(){return {app:'hidamari-log',formatVersion:1,appVersion:'0.7',exportedAt:new Date().toISOString(),data:data};}
 exportBackup.onclick=()=>{
  const now=new Date(), payload=backupPayload(), blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}), url=URL.createObjectURL(blob), a=document.createElement('a');
  a.href=url;a.download=`ひだまりログ_${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
@@ -226,12 +261,26 @@ const praisePool=[
  ['◎','えらい！','ひとつクリア！今日も前に進んでるよ。'],
  ['✿','できた！','そのひとつ、ちゃんと数えていいんだよ。']
 ];
-function getTaskDay(k=ds(taskDate)){if(!data.taskDays[k])data.taskDays[k]={items:[],appliedSets:[]};return data.taskDays[k];}
-function applyTaskSet(setId){let set=data.taskSets.find(x=>x.id===setId),day=getTaskDay();if(!set)return;day.appliedSets=day.appliedSets||[];if(!day.appliedSets.includes(setId)){for(const name of set.items){if(!day.items.some(x=>x.name===name))day.items.push({id:crypto.randomUUID(),name,done:false,doneAt:null});}day.appliedSets.push(setId);save();}renderTasks();}
-function renderTasks(){let k=ds(taskDate),day=getTaskDay(k),today=ds(new Date())===k;taskDateLabel.innerHTML=`${taskDate.getMonth()+1}月${taskDate.getDate()}日<small>${['日','月','火','水','木','金','土'][taskDate.getDay()]}曜日</small>`;let done=day.items.filter(x=>x.done).length;taskDoneCount.textContent=`${done}個`;taskSummaryPraise.textContent=done?['今日もちゃんと進めてる！','できたこと、ちゃんとあるよ！','よくできました！'][done%3]:'ひとつできたら、それだけで花丸！';taskList.innerHTML=day.items.length?day.items.map(t=>`<div class="task-item ${t.done?'done':''}"><button class="task-check" onclick="toggleTask('${t.id}')">${t.done?'✓':''}</button><div class="task-name">${esc(t.name)}</div><button class="task-menu" onclick="deleteTask('${t.id}')">×</button></div>`).join(''):'<div class="empty">まだ何も入っていません。<br>できたら嬉しいことを、ひとつ置いてみよう。</div>';setChips.innerHTML=data.taskSets.map(x=>`<button class="set-chip ${(day.appliedSets||[]).includes(x.id)?'active':''}" onclick="applyTaskSet('${x.id}')">${esc(x.name)}${(day.appliedSets||[]).includes(x.id)?' ✓':''}</button>`).join('');setManager.innerHTML=data.taskSets.map(set=>`<div class="entry"><div class="meta"><strong>${esc(set.name)}</strong><button class="star" onclick="deleteSet('${set.id}')">×</button></div>${set.items.map((name,i)=>`<div style="display:flex;gap:6px;align-items:center;margin:6px 0"><span style="flex:1">・${esc(name)}</span><button class="ghost" style="padding:4px 8px" onclick="removeSetItem('${set.id}',${i})">削除</button></div>`).join('')}<div class="row" style="margin-top:8px"><input id="setadd_${set.id}" placeholder="このセットに追加"><button class="ghost" style="flex:0 0 auto" onclick="addSetItem('${set.id}')">追加</button></div></div>`).join('');}
+function getTaskDay(k=ds(taskDate)){if(!data.taskDays[k])data.taskDays[k]={items:[],appliedSets:[],appliedSetItems:{}};let d=data.taskDays[k];d.items=d.items||[];d.appliedSets=d.appliedSets||[];d.appliedSetItems=d.appliedSetItems||{};return d;}
+function applyTaskSet(setId){
+ let set=data.taskSets.find(x=>x.id===setId),day=getTaskDay();if(!set)return;
+ let prev=day.appliedSetItems[setId]||[];
+ // 以前このセットから入れた項目のうち、セットから削除された未完了項目だけ今日の一覧から外す
+ if(prev.length){day.items=day.items.filter(t=>!(t.sourceSetId===setId&&!set.items.includes(t.name)&&!t.done));}
+ // 既存の同名項目を再利用し、新しく増えた項目だけ追加
+ for(const name of set.items){
+   let t=day.items.find(x=>x.name===name);
+   if(t){if(!t.sourceSetId)t.sourceSetId=setId;}
+   else day.items.push({id:crypto.randomUUID(),name,done:false,doneAt:null,sourceSetId:setId});
+ }
+ day.appliedSetItems[setId]=[...set.items];
+ if(!day.appliedSets.includes(setId))day.appliedSets.push(setId);
+ save();renderTasks();
+}
+function renderTasks(){let k=ds(taskDate),day=getTaskDay(k),today=ds(new Date())===k;taskDateLabel.innerHTML=`${taskDate.getMonth()+1}月${taskDate.getDate()}日<small>${['日','月','火','水','木','金','土'][taskDate.getDay()]}曜日</small>`;let done=day.items.filter(x=>x.done).length;taskDoneCount.textContent=`${done}個`;taskSummaryPraise.textContent=done?['今日もちゃんと進めてる！','できたこと、ちゃんとあるよ！','よくできました！'][done%3]:'ひとつできたら、それだけで花丸！';taskList.innerHTML=day.items.length?day.items.map(t=>`<div class="task-item ${t.done?'done':''}"><button class="task-check" onclick="toggleTask('${t.id}')">${t.done?'✓':''}</button><div class="task-name">${esc(t.name)}</div><button class="task-menu" onclick="deleteTask('${t.id}')">×</button></div>`).join(''):'<div class="empty">まだ何も入っていません。<br>できたら嬉しいことを、ひとつ置いてみよう。</div>';setChips.innerHTML=data.taskSets.map(x=>`<button class="set-chip ${(day.appliedSets||[]).includes(x.id)?'active':''}" onclick="applyTaskSet('${x.id}')" title="押すたびに最新のセット内容を反映">${esc(x.name)}${(day.appliedSets||[]).includes(x.id)?' ↻':''}</button>`).join('');setManager.innerHTML=data.taskSets.map(set=>`<div class="entry"><div class="meta"><strong>${esc(set.name)}</strong><button class="star" onclick="deleteSet('${set.id}')">×</button></div>${set.items.map((name,i)=>`<div style="display:flex;gap:6px;align-items:center;margin:6px 0"><span style="flex:1">・${esc(name)}</span><button class="ghost" style="padding:4px 8px" onclick="removeSetItem('${set.id}',${i})">削除</button></div>`).join('')}<div class="row" style="margin-top:8px"><input id="setadd_${set.id}" placeholder="このセットに追加"><button class="ghost" style="flex:0 0 auto" onclick="addSetItem('${set.id}')">追加</button></div></div>`).join('');}
 prevTaskDay.onclick=()=>{taskDate.setDate(taskDate.getDate()-1);renderTasks()};nextTaskDay.onclick=()=>{taskDate.setDate(taskDate.getDate()+1);renderTasks()};
 addTodayTask.onclick=()=>{let name=newTaskName.value.trim();if(!name)return;getTaskDay().items.push({id:crypto.randomUUID(),name,done:false,doneAt:null});newTaskName.value='';save();renderTasks();};
-window.toggleTask=id=>{let t=getTaskDay().items.find(x=>x.id===id);if(!t)return;t.done=!t.done;t.doneAt=t.done?Date.now():null;save();renderTasks();if(t.done){let p=praisePool[Math.floor(Math.random()*praisePool.length)];praiseMark.textContent=p[0];praiseTitle.textContent=t.name+'、できた！';praiseText.innerHTML=`${esc(p[1])}<br>${esc(p[2])}`;praiseOverlay.classList.remove('hidden');}};
+window.toggleTask=id=>{let t=getTaskDay().items.find(x=>x.id===id);if(!t)return;t.done=!t.done;t.doneAt=t.done?Date.now():null;save();renderTasks();};
 closePraise.onclick=()=>praiseOverlay.classList.add('hidden');praiseOverlay.onclick=e=>{if(e.target===praiseOverlay)praiseOverlay.classList.add('hidden')};
 window.deleteTask=id=>{if(confirm('この項目を今日のリストから消しますか？')){let d=getTaskDay();d.items=d.items.filter(x=>x.id!==id);save();renderTasks();}};
 addSet.onclick=()=>{let name=newSetName.value.trim();if(!name)return;let id=crypto.randomUUID();data.taskSets.push({id,name,items:[]});activeTaskSet=id;newSetName.value='';save();renderTasks();};
@@ -239,6 +288,38 @@ window.deleteSet=id=>{if(confirm('このセットを削除しますか？ 今日
 window.addSetItem=id=>{let input=document.getElementById('setadd_'+id),name=input?.value.trim(),set=data.taskSets.find(x=>x.id===id);if(!name||!set)return;set.items.push(name);input.value='';save();renderTasks();};
 window.removeSetItem=(id,i)=>{let set=data.taskSets.find(x=>x.id===id);if(!set)return;set.items.splice(i,1);save();renderTasks();};
 
+
+
+function renderWorkouts(){
+ if(!window.workoutList)return;
+ workoutList.innerHTML=data.workouts.length?data.workouts.map(w=>{
+   let pct=Math.min(100,Math.round((w.current/w.goal)*100));
+   return `<div class="workout-card">
+    <div class="workout-head"><div><div class="workout-name">${esc(w.name)}</div><div class="workout-pct">${pct>=100?'目標達成！':`目標まであと ${Math.max(0,w.goal-w.current)}${esc(w.unit)}`}</div></div><div class="workout-count">${w.current} / ${w.goal}${esc(w.unit)}</div></div>
+    <div class="workout-progress" aria-label="${esc(w.name)}の進捗 ${pct}%"><span style="width:${pct}%"></span></div>
+    <div class="workout-pct">${pct}%</div>
+    <div class="workout-actions">
+      <button class="ghost" onclick="addWorkoutValue('${w.id}',10)">＋10</button>
+      <button class="ghost" onclick="addWorkoutValue('${w.id}',20)">＋20</button>
+      <input id="workoutAdd_${w.id}" type="number" min="1" inputmode="numeric" placeholder="追加">
+      <button class="primary" onclick="addWorkoutCustom('${w.id}')">足す</button>
+    </div>
+    <div class="workout-goal-row">
+      <span class="graph-note">目標</span><input id="workoutGoal_${w.id}" type="number" min="1" inputmode="numeric" value="${w.goal}">
+      <select id="workoutUnit_${w.id}"><option value="回"${w.unit==='回'?' selected':''}>回</option><option value="秒"${w.unit==='秒'?' selected':''}>秒</option><option value="分"${w.unit==='分'?' selected':''}>分</option></select>
+      <button class="ghost" onclick="updateWorkoutGoal('${w.id}')">変更</button>
+      <button class="ghost" onclick="editWorkoutCurrent('${w.id}')">現在値を修正</button>
+      <button class="ghost" onclick="deleteWorkout('${w.id}')">削除</button>
+    </div>
+   </div>`;
+ }).join(''):'<div class="empty">筋トレメニューがありません。</div>';
+}
+window.addWorkoutValue=(id,n)=>{let w=data.workouts.find(x=>x.id===id);if(!w)return;w.current=Math.max(0,w.current+n);save();renderWorkouts();};
+window.addWorkoutCustom=id=>{let w=data.workouts.find(x=>x.id===id),el=document.getElementById('workoutAdd_'+id);if(!w||!el)return;let n=Number(el.value);if(!Number.isFinite(n)||n<=0)return;w.current+=n;el.value='';save();renderWorkouts();};
+window.updateWorkoutGoal=id=>{let w=data.workouts.find(x=>x.id===id),g=document.getElementById('workoutGoal_'+id),u=document.getElementById('workoutUnit_'+id);if(!w||!g||!u)return;let goal=Number(g.value);if(!Number.isFinite(goal)||goal<1)return;w.goal=goal;w.unit=u.value;save();renderWorkouts();};
+window.editWorkoutCurrent=id=>{let w=data.workouts.find(x=>x.id===id);if(!w)return;let v=prompt(`${w.name}の現在値を修正`,String(w.current));if(v===null)return;let n=Number(v);if(!Number.isFinite(n)||n<0)return;w.current=n;save();renderWorkouts();};
+window.deleteWorkout=id=>{let w=data.workouts.find(x=>x.id===id);if(!w)return;if(confirm(`${w.name}を筋トレメニューから削除しますか？`)){data.workouts=data.workouts.filter(x=>x.id!==id);save();renderWorkouts();}};
+addWorkout.onclick=()=>{let name=newWorkoutName.value.trim(),goal=Number(newWorkoutGoal.value),unit=newWorkoutUnit.value;if(!name||!Number.isFinite(goal)||goal<1)return;data.workouts.push({id:crypto.randomUUID(),name,unit,goal,current:0});newWorkoutName.value='';newWorkoutGoal.value='';save();renderWorkouts();};
 
 const symptomNames=['生理痛','頭痛','腹痛','眠い'];
 function graphPeriod(){
