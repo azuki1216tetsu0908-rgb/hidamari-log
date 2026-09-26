@@ -33,13 +33,13 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .stamps{display:flex;gap:7px;flex-wrap:wrap}.stamp{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 10px}.stamp.on{background:var(--pink2);border-color:var(--pink)}
 .entry{padding:12px 2px;border-bottom:1px dashed var(--line)}.entry:last-child{border:0}.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:5px}.entrytext{white-space:pre-wrap;line-height:1.6}.star{border:0;background:none;color:var(--muted);font-size:18px}.star.on{color:#e8a126}.empty{text-align:center;color:var(--muted);padding:24px 8px}
 .section-title{font-weight:800;margin:4px 0 10px}
-.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(7,1fr);max-width:760px;margin:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(8,1fr);max-width:760px;margin:auto;padding:7px 8px calc(7px + env(safe-area-inset-bottom))}
 .nav{border:0;background:none;color:var(--muted);padding:7px 2px;font-size:12px}.nav b{display:block;font-size:19px;margin-bottom:2px}.nav.active{color:var(--accent);font-weight:800}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.char{padding:13px;border:1px solid var(--line);background:var(--card);border-radius:16px;text-align:left;color:var(--ink)}.char strong{display:block}.char small{color:var(--muted)}
 .row{display:flex;gap:8px}.row>*{flex:1}.hidden{display:none!important}
 .charhead{display:flex;justify-content:space-between;align-items:center}.back{border:0;background:none;color:var(--accent);font-weight:800;padding:0}
 .search{margin-bottom:12px}
-.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.calday{min-height:66px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px;color:var(--ink);font-size:12px}.calday.muted{opacity:.35}.dots{font-size:12px;line-height:1.25;margin-top:7px;color:var(--accent);min-height:16px;letter-spacing:2px}
+.calgrid{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}.calday{min-height:66px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px;color:var(--ink);font-size:12px}.calday.muted{opacity:.35}.dots{font-size:12px;line-height:1.25;margin-top:7px;color:var(--accent);min-height:16px;letter-spacing:2px}
 .period{height:5px;background:var(--pink);margin:5px -7px 0}.period.start{margin-left:0;border-radius:999px 0 0 999px}.period.end{margin-right:0;border-radius:0 999px 999px 0}.period.single{margin:5px 0 0;border-radius:999px}
 .legend{display:flex;gap:9px 14px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}.legend span{white-space:nowrap}.legend .line{display:inline-block;width:22px;height:5px;background:var(--pink);border-radius:999px;vertical-align:middle;margin-right:4px}
 .quote{background:var(--pink3);border-radius:14px;padding:12px;line-height:1.6}
@@ -55,6 +55,12 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 .workout-goal-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:9px}
 .workout-goal-row input,.workout-goal-row select{max-width:110px}
 .workout-pct{font-size:12px;color:var(--muted)}
+.creation-entry{display:flex;gap:9px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line)}
+.creation-entry:last-child{border-bottom:0}.creation-text{flex:1;min-width:0;line-height:1.55}
+.creation-date{font-size:12px;color:var(--muted);white-space:nowrap}.creation-delete{border:0;background:none;color:var(--muted);font-size:18px;padding:0 4px}
+.creation-month-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}
+.creation-count{font-size:12px;color:var(--muted);font-weight:800}
+
 
 .mental-stamp.level1{background:#ffe9e9;border-color:#f2bcbc}.mental-stamp.level2{background:#f5a7ad;border-color:#e98891;color:#fff}.mental-stamp.level3{background:#c95868;border-color:#b74657;color:#fff}
 .graph-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}.graph-tab{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:10px;border-radius:999px;font-weight:800}.graph-tab.active{background:var(--pink);border-color:var(--pink);color:#fff}
@@ -64,7 +70,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 </head>
 <body>
 <div class="app">
-<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.7</small></div><div style="display:flex;gap:8px"><button class="iconbtn" id="settingsBtn" title="データ管理">⚙</button><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></div></header>
+<header><div class="headrow"><div class="brand">ひだまりログ <small>v0.8</small></div><div style="display:flex;gap:8px"><button class="iconbtn" id="settingsBtn" title="データ管理">⚙</button><button class="iconbtn" id="themeBtn" title="テーマ切替">☾</button></div></div></header>
 <main>
 <section class="page active" id="diaryPage">
   <div class="card datebar"><button id="prevDay">←</button><div class="date" id="dateLabel"></div><button id="nextDay">→</button></div>
@@ -120,6 +126,21 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 </section>
 
 
+
+<section class="page" id="creationsPage">
+  <div class="card">
+    <div class="section-title">今日つくったもの</div>
+    <p class="graph-note">作品でも、アプリの修正でも、設定をひとつ決めたでもOK。何もない日は空欄のままで大丈夫。</p>
+    <div class="row" style="margin-top:10px"><input id="newCreationText" placeholder="例：ひだまりログ v0.8を作った"><button class="primary" id="addCreation" style="flex:0 0 auto">追加</button></div>
+    <div id="todayCreations" style="margin-top:8px"></div>
+  </div>
+  <div class="card">
+    <div class="creation-month-head"><div class="section-title" style="margin:0">今月つくったもの</div><div class="creation-count" id="creationMonthCount">0個</div></div>
+    <div class="row" style="align-items:center;margin-bottom:10px"><button class="ghost" id="prevCreationMonth">‹</button><div id="creationMonthLabel" style="flex:1;text-align:center;font-weight:900"></div><button class="ghost" id="nextCreationMonth">›</button></div>
+    <div id="monthCreations"></div>
+  </div>
+</section>
+
 <section class="page" id="workoutPage">
   <div class="card">
     <div class="section-title">筋トレ</div>
@@ -155,6 +176,7 @@ textarea{min-height:92px;resize:vertical}.composer-actions{display:flex;justify-
 <button class="nav active" data-page="diaryPage"><b>⌂</b>日記</button>
 <button class="nav" data-page="charactersPage"><b>♡</b>キャラ</button>
 <button class="nav" data-page="tasksPage"><b>✓</b>できた</button>
+<button class="nav" data-page="creationsPage"><b>✎</b>つくった</button>
 <button class="nav" data-page="workoutPage"><b>▥</b>筋トレ</button>
 <button class="nav" data-page="calendarPage"><b>□</b>カレンダー</button>
 <button class="nav" data-page="graphPage"><b>⌁</b>グラフ</button>
@@ -171,6 +193,7 @@ data.diary=data.diary||[]; data.stamps=data.stamps||{}; data.characters=data.cha
 if(data.activeStamps.includes('メンタル↓')){data.activeStamps=data.activeStamps.filter(x=>x!=='メンタル↓');if(!data.mentalLevel)data.mentalLevel=1;}
 data.diary.forEach(e=>{if(e.mentalLevel==null)e.mentalLevel=(e.stamps||[]).includes('メンタル↓')?1:0;e.stamps=(e.stamps||[]).filter(x=>x!=='メンタル↓');});
 data.taskSets=data.taskSets||[{id:'weekday',name:'平日',items:['朝起きた','着替えた','家を出た','出勤した','お昼ご飯食べた','定時まで働いた','帰宅した','お風呂に入った']}]; data.taskDays=data.taskDays||{};
+data.creations=data.creations||[];
 data.workouts=data.workouts||[
  {id:'squat',name:'スクワット',unit:'回',goal:100,current:0},
  {id:'knee',name:'膝伸ばし',unit:'回',goal:100,current:0},
@@ -180,21 +203,21 @@ data.workouts=data.workouts||[
 ];
 data.workouts.forEach(w=>{w.current=Math.max(0,Number(w.current)||0);w.goal=Math.max(1,Number(w.goal)||1);w.unit=w.unit||'回';});
 
-let currentDate=new Date(), diaryTab='daily', currentChar=null, charTab='quotes', calDate=new Date(), taskDate=new Date(), graphDate=new Date(), graphRange='day', activeTaskSet=data.taskSets[0]?.id||null;
+let currentDate=new Date(), diaryTab='daily', currentChar=null, charTab='quotes', calDate=new Date(), taskDate=new Date(), creationMonth=new Date(), graphDate=new Date(), graphRange='day', activeTaskSet=data.taskSets[0]?.id||null;
 const stateStamps=['生理痛','頭痛','腹痛','眠い','元気','運動'];
 const mentalLabels=['メンタル↓','ちょっとしんどい','しんどい','めちゃしんどい'];
 const calendarIcons={'生理痛':'◉','頭痛':'●','腹痛':'◆','眠い':'☾','運動':'✓'};
 const save=()=>{localStorage.setItem(KEY,JSON.stringify(data));};
 const ds=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
 const esc=s=>(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));if(id==='tasksPage')renderTasks();if(id==='workoutPage')renderWorkouts();if(id==='graphPage')renderGraph();}
+function showPage(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.page===id));if(id==='tasksPage')renderTasks();if(id==='creationsPage')renderCreations();if(id==='workoutPage')renderWorkouts();if(id==='graphPage')renderGraph();}
 document.querySelectorAll('.nav').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 function applyTheme(){document.documentElement.dataset.theme=data.theme||'light';document.getElementById('themeBtn').textContent=data.theme==='dark'?'☀':'☾';}
 themeBtn.onclick=()=>{data.theme=data.theme==='dark'?'light':'dark';save();applyTheme()};applyTheme();
 settingsBtn.onclick=()=>{showPage('settingsPage');renderBackupStatus();};
 settingsBack.onclick=()=>showPage('diaryPage');
 function renderBackupStatus(){const v=localStorage.getItem(LAST_BACKUP_KEY);lastBackup.textContent='最終バックアップ：'+(v?new Date(v).toLocaleString('ja-JP',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}):'まだありません');}
-function backupPayload(){return {app:'hidamari-log',formatVersion:1,appVersion:'0.7',exportedAt:new Date().toISOString(),data:data};}
+function backupPayload(){return {app:'hidamari-log',formatVersion:1,appVersion:'0.8',exportedAt:new Date().toISOString(),data:data};}
 exportBackup.onclick=()=>{
  const now=new Date(), payload=backupPayload(), blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}), url=URL.createObjectURL(blob), a=document.createElement('a');
  a.href=url;a.download=`ひだまりログ_${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
@@ -289,6 +312,27 @@ window.addSetItem=id=>{let input=document.getElementById('setadd_'+id),name=inpu
 window.removeSetItem=(id,i)=>{let set=data.taskSets.find(x=>x.id===id);if(!set)return;set.items.splice(i,1);save();renderTasks();};
 
 
+
+
+function creationDateLabel(k){
+ let [y,m,d]=k.split('-').map(Number),dt=new Date(y,m-1,d);
+ return `${m}/${d}（${['日','月','火','水','木','金','土'][dt.getDay()]}）`;
+}
+function renderCreations(){
+ if(!window.todayCreations)return;
+ let todayKey=ds(new Date()),today=data.creations.filter(x=>x.date===todayKey).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+ todayCreations.innerHTML=today.length?today.map(x=>`<div class="creation-entry"><div class="creation-text">${esc(x.text)}</div><button class="creation-delete" onclick="deleteCreation('${x.id}')" title="削除">×</button></div>`).join(''):'<div class="empty">今日はまだ何も置かれていません。<br>つくったものがあったら、ひとつ残してみよう。</div>';
+ let y=creationMonth.getFullYear(),m=creationMonth.getMonth();
+ creationMonthLabel.textContent=`${y}年${m+1}月`;
+ let list=data.creations.filter(x=>{let [yy,mm]=x.date.split('-').map(Number);return yy===y&&mm===m+1;}).sort((a,b)=>b.date.localeCompare(a.date)||(b.createdAt||0)-(a.createdAt||0));
+ creationMonthCount.textContent=`${list.length}個`;
+ monthCreations.innerHTML=list.length?list.map(x=>`<div class="creation-entry"><div class="creation-date">${creationDateLabel(x.date)}</div><div class="creation-text">${esc(x.text)}</div><button class="creation-delete" onclick="deleteCreation('${x.id}')" title="削除">×</button></div>`).join(''):'<div class="empty">この月の成果物はまだありません。</div>';
+}
+addCreation.onclick=()=>{let text=newCreationText.value.trim();if(!text)return;data.creations.push({id:crypto.randomUUID(),date:ds(new Date()),text,createdAt:Date.now()});newCreationText.value='';save();renderCreations();};
+newCreationText.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addCreation.click();}});
+window.deleteCreation=id=>{if(confirm('この「つくったもの」を削除しますか？')){data.creations=data.creations.filter(x=>x.id!==id);save();renderCreations();}};
+prevCreationMonth.onclick=()=>{creationMonth.setMonth(creationMonth.getMonth()-1);renderCreations();};
+nextCreationMonth.onclick=()=>{creationMonth.setMonth(creationMonth.getMonth()+1);renderCreations();};
 
 function renderWorkouts(){
  if(!window.workoutList)return;
